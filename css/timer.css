@@ -7,7 +7,7 @@
 }
 
 .timer {
-	padding: 10px;
+	padding: 25px;
 	background: linear-gradient(top, #222, #444);
 	overflow: hidden;
 	display: inline-block;
@@ -52,6 +52,7 @@
 #timer_controls label {
 	cursor: pointer;
 	padding: 25px 35px;
+    margin: 10px;
 	background: #efefef;
     font-family: Arial,Helvetica,FreeSans,"Liberation Sans","Nimbus Sans L",sans-serif;
 	font-size: 20px;
