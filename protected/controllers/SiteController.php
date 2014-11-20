@@ -32,6 +32,13 @@ class SiteController extends Controller
 		$this->render('index');
 	}
 
+	public function actionTimer()
+	{
+		// renders the view file 'protected/views/site/index.php'
+		// using the default layout 'protected/views/layouts/main.php'
+		$this->render('timer');
+	}
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */

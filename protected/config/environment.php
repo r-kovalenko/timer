@@ -112,21 +112,21 @@ class Environment
 		$configFile = dirname(__FILE__) . DIRECTORY_SEPARATOR . strtolower($this->_mode) . '.php';
 
 		if (!file_exists($configFile)) {
-			throw new Exception('Cannot find config file "' . $configFile . '".');
+			throw new LogicException('Cannot find config file "' . $configFile . '".');
 		}
 		require($configFile);
 
 		if (!isset($config)) {
-			throw new Exception('Undeclared variable $config in file "' . $configFile . '".');
+			throw new LogicException('Undeclared variable $config in file "' . $configFile . '".');
 		}
 		if (!isset($yiiPath)) {
-			throw new Exception('Undeclared variable $yiiPath in file "' . $configFile . '".');
+			throw new LogicException('Undeclared variable $yiiPath in file "' . $configFile . '".');
 		}
 		if (!isset($debug)) {
-			throw new Exception('Undeclared variable $debug in file "' . $configFile . '".');
+			throw new LogicException('Undeclared variable $debug in file "' . $configFile . '".');
 		}
 		if (!isset($trace_level)) {
-			throw new Exception('Undeclared variable $trace_level in file "' . $configFile . '".');
+			throw new LogicException('Undeclared variable $trace_level in file "' . $configFile . '".');
 		}
 		// Merge config arrays into one
 		$this->_config = array_merge_recursive($config_main, $config);

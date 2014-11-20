@@ -1,0 +1,124 @@
+
+
+.timer_container {
+    position: relative;
+	padding: 100px;
+	text-align: center;
+}
+
+.timer {
+	padding: 25px;
+	background: linear-gradient(top, #222, #444);
+	overflow: hidden;
+	display: inline-block;
+	border: 7px solid #efefef;
+	border-radius: 5px;
+	position: relative;
+	box-shadow:
+		inset 0 -2px 10px 1px rgba(0, 0, 0, 0.75), 
+		0 5px 20px -10px rgba(0, 0, 0, 1);
+}
+
+.cell {
+	/*Нужно выводит только одну цифру. Следовательно высота = высоте строки .numbers
+	и ширина = ширине .numbers*/
+	width: 0.60em;
+	height: 40px;
+	font-size: 50px;
+	overflow: hidden;
+	position: relative;
+	float: left;
+}
+
+.numbers {
+	width: 0.6em;
+	line-height: 40px;
+    font-family: Arial,Helvetica,FreeSans,"Liberation Sans","Nimbus Sans L",sans-serif;
+    font-weight: bold;
+	text-align: center;
+	color: #041e93;
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	/*Свечение текста*/
+	text-shadow: 0 0 5px rgba(255, 255, 255, 1);
+}
+
+/* Стили для элементов управления*/
+#timer_controls {
+	margin-top: 50px;
+}
+#timer_controls label {
+	cursor: pointer;
+	padding: 25px 35px;
+    margin: 10px;
+	background: #efefef;
+    font-family: Arial,Helvetica,FreeSans,"Liberation Sans","Nimbus Sans L",sans-serif;
+	font-size: 20px;
+    border: 4px solid #efefef;
+    border-radius: 7px;
+    box-shadow:
+    0 -2px 10px 1px rgba(8, 3, 23, 0.75),
+    0 5px 20px -10px rgba(0, 0, 0, 1);
+}
+#timer_controls label:hover {
+    background: #15cda0;
+}
+#timer_controls label:active {
+    background-image: -moz-linear-gradient(#2F96B4, #5BC0DE); /* Firefox */
+    background-image: -webkit-linear-gradient(#2F96B4, #5BC0DE); /* Chrome, Safari */
+    background-image: -ms-linear-gradient(#2F96B4, #5BC0DE); /* IE-10 */
+    background-image: -o-linear-gradient(#2F96B4, #5BC0DE); /* Opera */
+    border-bottom: 1px solid #5BC0DE;
+    /* добавляем внутренние тени */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset;
+    /* градиент для IE6-9 */
+    filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#2F96B4', EndColorStr='#5BC0DE', GradientType=0);
+}
+input[name="controls"] {display: none;}
+
+/* Код элементов управления */
+#stop:checked~.timer .numbers {animation-play-state: paused;}
+#start:checked~.timer .numbers {animation-play-state: running;}
+#reset:checked~.timer .numbers {animation: none;}
+
+.moveten {
+	/*Для улучшения внешнего вида настраиваем шаги смены цифр.
+	10 цифр = 10 шагов*/
+	animation: moveten 1s steps(10, end) infinite;
+	/*По умолчанию анимация остановлена*/
+	animation-play-state: paused;
+}
+.movesix {
+	animation: movesix 1s steps(6, end) infinite;
+	animation-play-state: paused;
+}
+
+/*Синхронизация скорости анимации со временем */
+/*одна секунда на цифру. 10 цифр. Следвоательно 10 секунд*/
+.second {animation-duration: 10s;}
+.tensecond {animation-duration: 60s;} /*60 раз .second*/
+
+.milisecond {animation-duration: 1s;} /*1/10 от .second*/
+.tenmilisecond {animation-duration: 0.1s;}
+.hundredmilisecond {animation-duration: 0.01s;}
+
+.minute {animation-duration: 600s;} /*60 раз .second*/
+.tenminute {animation-duration: 3600s;} /*60 раз .minute*/
+
+.hour {animation-duration: 36000s;} /*60 раз .minute*/
+.tenhour {animation-duration: 360000s;} /*10 раз .hour*/
+
+/* Анимация */
+@keyframes moveten {
+	0% {top: 0;}
+	100% {top: -400px;} 
+	/* Высота = 40 .digits = 10. Следовательно -400 для полного перемещения на верх*/
+}
+
+@keyframes movesix {
+	0% {top: 0;}
+	100% {top: -240px;} 
+	/*Высота = 40 .digits = 6. Следовательно -240 для полного пермещения наверх*/
+}

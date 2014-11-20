@@ -6,50 +6,27 @@ $base_url = Yii::app()->request->getBaseUrl();
 $cs = Yii::app()->getClientScript();
 //$cs->registerCssFile($base_url . '/css/layout.css');
 $cs->registerCssFile($base_url . '/css/timer.css');
-$cs->registerScriptFile($base_url . '/js/prefixfree.js');
+$cs->registerScriptFile($base_url . '/js/timer.js');
 ?>
 <h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 <div class="timer_container">
 	<!-- time to add the controls -->
-	<input id="start" name="controls" type="radio" />
-	<input id="stop" name="controls" type="radio" />
-	<input id="reset" name="controls" type="radio" />
 	<div class="timer">
-		<div class="cell">
-			<div class="numbers tenhour moveten">0 1 2 3 4 5 6 7 8 9</div>
-		</div>
-		<div class="cell">
-			<div class="numbers hour moveten">0 1 2 3 4 5 6 7 8 9</div>
-		</div>
-		<div class="cell divider"><div class="numbers">:</div></div>
-		<div class="cell">
-			<div class="numbers tenminute movesix">0 1 2 3 4 5 6</div>
-		</div>
-		<div class="cell">
-			<div class="numbers minute moveten">0 1 2 3 4 5 6 7 8 9</div>
-		</div>
-		<div class="cell divider"><div class="numbers">:</div></div>
-		<div class="cell">
-			<div class="numbers tensecond movesix">0 1 2 3 4 5 6</div>
-		</div>
-		<div class="cell">
-			<div class="numbers second moveten">0 1 2 3 4 5 6 7 8 9</div>
-		</div>
-		<div class="cell divider"><div class="numbers">:</div></div>
-		<div class="cell">
-			<div class="numbers milisecond moveten">0 1 2 3 4 5 6 7 8 9</div>
-		</div>
-		<div class="cell">
-			<div class="numbers tenmilisecond moveten">0 1 2 3 4 5 6 7 8 9</div>
-		</div>
-		<div class="cell">
-			<div class="numbers hundredmilisecond moveten">0 1 2 3 4 5 6 7 8 9</div>
-		</div>
+		<div id="hours">00</div>
+		<div class="twodot">:</div>
+		<div id="minutes">00</div>
+		<div class="twodot">:</div>
+			<div id="seconds">00</div>
+		<div class="twodot">:</div>
+		<div id="miliseconds">000</div>
 	</div>
 	<!-- Lables for the controls -->
 	<div id="timer_controls">
-		<label for="start">Start</label>
-		<label for="stop">Stop</label>
-		<label for="reset">Reset</label>
+		<button id="start" type="button" onclick="start();">Старт</button>
+		<button id="stop" type="button" onclick="stop();">Стоп</button>
+		<button id="reset" type="button" onclick="reset();">Стереть</button>
 	</div>
 </div>
+<script>
+	init();
+</script>

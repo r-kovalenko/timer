@@ -43,7 +43,7 @@ return array(
 				'sitemap.xml' => 'sitemap/index',
 				'sitemap_google.xml' => 'sitemapg/index',
 				'<language:(en|ru|uk)>/' => 'site/index',
-				'<language:(en|ru|uk)>/<action:(contact|login|logout)>/*' => 'site/<action>',
+				'<language:(en|ru|uk)>/<action:(contact|timer|login|logout)>/*' => 'site/<action>',
 				'<language:(en|ru|uk)>/<controller:\w+>/<id:\d+>' => '<controller>/view',
 				'<language:(en|ru|uk)>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
 				'<language:(en|ru|uk)>/<controller:\w+>/<action:\w+>/*' => '<controller>/<action>',
